@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Variables</title>
+</head>
+<body>
+
+    <script>
+
+
+        // VAR VS LET VARIABLES
+
+        // When in doubt, use let.
+
+        // This level is the GLOBAL SCOPE
+        console.log("Hello World!");
+
+        var myVariable = 10;
+
+        let myOtherVariable = 11;
+
+        {
+            // This level is a LOCAL SCOPE
+
+            console.log(myOtherVariable);
+
+            myVariable;
+
+            var privateVariable = 100;
+
+            let anActualPrivateVar = 200;
+
+            console.log(anActualPrivateVar);
+
+        }
+
+        console.log(privateVariable);
+        // console.log(anActualPrivateVar);
+
+        // CONST VARIABLE
+        // Const variables are constant throughout the script, and CANNOT change. You'll get an error if you try to change a const variable.
+        // const cannotBeChanged = 50;
+
+        // console.log(cannotBeChanged);
+
+        cannotBeChanged = 51;
+
+        const PINumber = 3.14;
+
+        PINumber = 5;
+
+        const dbusername = "admin";
+
+
+    </script>
+    
+</body>
+</html>
