@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Loops</title>
+</head>
+<body>
+
+    <script>
+
+        // FOR Loop
+
+        console.log("First Loop");
+
+
+        // Inside of the parenthesis: Initialization; Condition, Iteration
+        for (let count = 0; count < 10; count = count + 1) {
+            console.log("Loop #" + count);
+        }
+        
+        console.log("Second Loop");
+
+        for (let count = 10; count > 0; count = count - 1) {
+            console.log("Loop #" + count);
+        }
+
+        // WHILE Loop
+
+        console.log("Third Loop");
+
+        let count = 0;
+
+        // The boolean in the parenthesis should become false at some point, otherwise the loop will continue to run forever.
+        while (count < 10) {
+            console.log("Loop #" + count);
+
+            count = count + 1;
+        }
+
+        // DO WHILE Loop
+
+
+        // Do While will execute the code once, AND THEN check the condition to see if we continue to run the code block.
+        do {
+            console.log("hello");
+        } while (false);
+
+    </script>
+    
+</body>
+</html>

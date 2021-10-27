@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions</title>
+</head>
+<body>
+
+    <script>    
+
+        // FUNCTION SYNTAX
+
+        function myFunction() {
+            console.log("Hello there");
+        }
+
+        // Tells the function run its code.
+        myFunction();
+        myFunction();
+
+        // A reference to the function.
+        myFunction;
+
+        // PARAMETERS & ARGUMENTS
+
+        // Parameters: Special Variables that belong to a function, they are created in the parenthesis of the function definition.
+
+        function multiply4thPower(number) {
+            // let number = ;
+            let results = number * number * number * number;
+            console.log(results);
+        }
+
+       
+        // Arguments: The data that gets passed to the Parameter. Arguments are written in the parethesis of the function call.
+
+        multiply4thPower(5);
+        multiply4thPower(50);
+        multiply4thPower(25);
+
+        // RETURN keyword
+
+        function returnName() {
+            return "Joe";
+            // When the return keyword is executed, the function ENDS immediately;
+
+            console.log("Secret Message");
+        }
+
+        // When there is a return keyword in a function definition, The value is returned to where the function was called.
+        let userName = returnName();
+
+        console.log(userName);
+
+
+
+    </script>
+    
+</body>
+</html>

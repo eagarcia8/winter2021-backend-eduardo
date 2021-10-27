@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript If Statements</title>
+</head>
+<body>
+    
+    <script>
+
+        let number = 67;
+
+        // Operators: ==, <, <=, >, >=, !=
+
+        // If statements always start with a "if" keyword, can have as many "else if" keywords as you want after the if keyword, and can end in an "else" keyword, if used, must be at the end.
+        if (number < (25 + 25)) {
+            console.log(number +  " is less than 50.");
+        } else if (number < 100) {
+            console.log(number + " is in between 49 and 100");
+        } else {
+            console.log(number + " is larger than 99");
+        }
+
+        // A switch statement starts with the keyword switch, the value to be compared to should be in the parenthesis, and then each case should have a potential match. If it matches it will execute that code.
+        switch (true) {
+            // A case is a set of code that executes if the value matches the value in the parenthesis after the switch keyword.
+            case (number < 50):
+                console.log(number +  " is less than 50.");
+                break;
+            case (number < 100):
+                console.log(number + " is in between 49 and 100");
+                break;
+            // Default is similar to "else" in an if statement, where it executes only if the previous cases don't match.
+            default:
+                console.log(number + " is larger than 99");
+                break;
+        }
+
+
+
+
+
+    </script>
+
+</body>
+</html>
