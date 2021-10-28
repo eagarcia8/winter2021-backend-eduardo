@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Pyramid Builder</title>
+</head>
+<body>
+
+    <script>
+
+        // console.log("*");
+        // console.log("**");
+        // console.log("***");
+
+        
+        // This is a function that builds a pyramid of text. It accepts two pieces of data: height and symbol, in the pyramidHeight and pyramidCharacter parameters.
+        function pyramidBuilder(pyramidHeight, pyramidCharacter) {
+
+            // If the pyramidHeight has the value of "random", then create a random number, and replace "random" with it.
+            if (pyramidHeight === "random") {
+                pyramidHeight = Math.floor(Math.random() * 24) + 2;
+            }
+            
+            // We start the column of text with no characters for the pyramidColumn string.
+            let pyramidColumn = "";
+
+            // For each loop, we add one of the characters to the existing string pyramidColumn. The loop runs for however many times pyramidHeight value has.
+            for (let count = 0; count < pyramidHeight; count = count + 1) {
+                // The character we use to build the pyramid is based on what the pyramidCharacter string is.
+                pyramidColumn = pyramidColumn + pyramidCharacter;
+                //Place the new pyramidColumn text on the console
+                console.log(pyramidColumn);
+            }
+
+            // For every loop, we remove the last character of the previous string in pyramidColumn. The loop runs for however many times pyramidHeight value has, minus 1.
+            for (let count = 0; count < pyramidHeight - 1; count = count + 1) {
+                // Since we cannot "subtract" from string, we need to break it apart using .split() and remove it using Array methods, .pop()
+                let pyramidColumnArray = pyramidColumn.split("");
+                pyramidColumnArray.pop();
+                // Once we remove the last Array element from the array. We want to convert the entire array back into a string.
+                let result = pyramidColumnArray.join("");
+                // We update the pyramidColumn string with the new one we created for the next loop iteration.
+                pyramidColumn = result;
+                // Place the new pyramidColumn text on the console
+                console.log(result);
+            }
+        }
+
+        // We can call the function and provide the number for the height in the first argument, and also what character to use in the second argument. If we want a random height pyramid, we use the string "random" instead of a number in the first argument.
+        pyramidBuilder(10, "*");
+
+
+
+
+
+        // pyramidBuilder(2, "%");
+        // pyramidBuilder(3, "O");
+        // pyramidBuilder(15, "S");
+
+        // Math.random(); // 0 and .9~
+        // let randomNumber = Math.floor(Math.random() * 24) + 2; //2 to 25
+
+        // pyramidBuilder(randomNumber, "#");
+
+        // for (let i = 0; i < 100; i++) {
+        //     let randomNumber = Math.floor(Math.random() * 24) + 2;
+        //     console.log(randomNumber);
+        // }
+
+
+
+
+    </script>
+    
+</body>
+</html>
