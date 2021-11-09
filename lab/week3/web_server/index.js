@@ -7,7 +7,12 @@ const app = express();
 // Allows Express to use the HTTP module of Node.
 const http = require("http").Server(app);
 
-// Tells Express/HTTP what port to listen to.
-http.listen(3000); // Common Development Ports: 8080, 3000 = Node.
+const port = 80;
 
-console.log("Express server is running on port 3000.");
+// Tells Express/HTTP what port to listen to.
+http.listen(port); // Common Development Ports: 8080, 3000 = Node.
+
+console.log("Express server is running on port " + port + ".");
+
+// Express Routes. Allows us to "redirect" a URL filepath to a specific folder.
+app.use("/", express.static("public_html/"));
