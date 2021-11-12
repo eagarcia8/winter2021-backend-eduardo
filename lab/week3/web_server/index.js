@@ -1,7 +1,7 @@
 // Use the Express package.
 const express = require("express");
 
-// Use the body-parser package.
+// Use the body-parser package. Deprecated, no longer used as body-parser is accessed through Express.js.
 const bodyParser = require("body-parser");
 
 // Creates an Express object from the Express package.
@@ -31,8 +31,15 @@ app.post("/test", function (request, response) {
     // The following code runs when a request is made.
     console.log("The front end sends the following: ", request.body);
 
+    let myResponseObject = {
+        response: "Heard you loud and clear!"
+    };
+
     // We send a response to the front-end client with a Status Code of 200 (which means OK).
-    response.sendStatus(200);
+    // response.sendStatus(200);
+
+    // Send an JavaScript object (which will be automatically converted to a JSON string) to the front-end. This also ends the .post() method, similar to the return keyword.
+    response.send(myResponseObject);
 });
 
 

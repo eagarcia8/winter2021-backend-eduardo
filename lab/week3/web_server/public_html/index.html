@@ -25,7 +25,11 @@
 
         // We run this function when we get a response from the back-end.
         xhr.onload = function () {
+
             console.log("The server has responded.");
+            
+            // this.responseText is the property of the response object, usually holding a JSON String.
+            console.log(this.responseText);
         };
     </script>
     
