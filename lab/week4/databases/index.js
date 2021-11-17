@@ -1,8 +1,13 @@
 // Loads in the Mongoose package.
 const mongoose = require("mongoose");
+// Access the credentials.js file for the MongoDB login details.
+const credentials = require("./credentials.js");
 
 // The URL that Mongoose will use to connect to the MongoDB database.
-const connectURL = "";
+const connectURL = credentials.mongoDBCredentials();
+
+console.log(credentials.specialNumber);
+console.log(credentials.privateInfo);
 
 // Settings and options for Mongoose.
 const options = {};
