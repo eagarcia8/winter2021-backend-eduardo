@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Game</title>
+
+    <!-- jQuery CDN code, allows us to "hotlink" the jQuery file. Hotlinking is usually "bad" but by nature CDNs allow hotlinking. -->
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+
+  <style>
+      table td {
+          border: grey solid 1px;
+      }
+  </style>
+
+
+</head>
+<body>
+
+    <h1>Match Game vs. Web Server</h1>
+
+    <h2>Make An Entry</h2>
+
+    <form>
+        <label>First Name</label>
+        <br />
+        <input id="fname" type="text" />
+        <br />
+        <label>Type a number between 1 and 10</label>
+        <br />
+        <input id="number" type="number" />
+        <br />
+    </form>
+
+    <button id="submit">Submit Choice</button>
+
+    <h2>Results</h2>
+
+    <p id="message"></p>
+
+    <h2>Previous Entries</h2>
+
+    <div>
+        <table id="history-table">
+        </table>
+    </div>
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            // When the page is fully loaded, we immediately send a request for the history array.
+            $.post("http:/localhost:3000/history", {}, function (responseData) {
+
+                console.log(responseData);
+
+                // We pass the array to the writeToTable function.
+                writeToTable(responseData.history);
+
+            });
+
+            // Listen for a click on the submit button.
+            $("#submit").click(function () {
+
+                // Grab the values from the input boxes.
+                let fnameValue = $("#fname").val();
+                let numberValue = $("#number").val();
+
+                // Create an object holding the values that are from the input boxes.
+                let data = {
+                    fname: fnameValue,
+                    number: numberValue
+                };
+
+                //data = JSON.stringify(data);
+
+
+                // jQuery POST Request, needs 3 arguments: addres, data to send, and callback function that runs when a response is recieved.
+                $.post("http:/localhost:3000/entry", data, function (responseData) {
+                    // The data that we get from the server will be in this function's parameter, which we called responseData.
+                    $("#message").html(responseData.message);
+
+                    // Grab the history array, and send it to the writeToTable function.
+                    writeToTable(responseData.history);
+
+                    
+                });
+
+            });
+
+        });
+
+        // Creates or updates the Previous Entries Table
+        function writeToTable(entries) {
+
+            // We reverse the array so we get the latest entry first.
+            entries.reverse();
+
+            // We clear out existing rows using .html(). We replace it with Table column names.
+            $("#history-table").html(`
+                <tr>
+                    <td>Name</td>
+                    <td>User Number</td>
+                    <td>Winning Number</td>
+                    <td>Status</td>
+                    <td>Entry Timestamp (PST)</td>
+                </tr>
+            `);
+
+            // For each object in the array...
+            for (let i = 0; i < entries.length; i++) {
+                let entry = entries[i];
+
+                // ... We create a row and pull in the data from the object.
+                let tableEntry = `<tr>
+                    <td>${entry.fname}</td>
+                    <td>${entry.number}</td>
+                    <td>${entry.serverNumber}</td>
+                    <td>${(entry.number == entry.serverNumber) ? "Winner" : "No Match"}</td>
+                    <td>${entry.timestamp}</td>
+                </tr>`;
+
+                // We add the new row to the end of the children's list of the table.
+                $("#history-table").append(tableEntry);
+            }
+
+        }
+
+
+
+        // JavaScript Template Literals
+        // var weather = "Raining";
+        // var concatination = "Today we have " + weather + " weather!";
+        // var literals = `Today we have ${weather} weather!`;
+
+    </script>
+</body>
+</html>
