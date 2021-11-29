@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "An App that tracks vehicles for rent.",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Eduardo",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "lodash": "^4.17.21"
   }
 }

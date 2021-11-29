@@ -1,5 +1,5 @@
 // The export keyword allows that function/variable to be used by anything else that imports this file.
-export class Vehicle {
+class Vehicle {
     constructor(data) {
         this.name = data.name;
         this.make = data.make;
@@ -10,3 +10,5 @@ export class Vehicle {
         this.timestamp = new Date();
     }
 }
+
+module.exports = Vehicle;

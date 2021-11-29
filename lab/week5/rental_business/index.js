@@ -1,4 +1,20 @@
-import {Car} from "./Car.js";
+const express = require("express");
+const app = express();
+const http = require("http").Server(app);
+const Car = require("./Car.js");
+// import {Car} from "./Car.js";
+
+app.use(express.json({strict: false}));
+app.use(express.urlencoded({extended: true}));
+
+const port = 3000;
+http.listen(port);
+
+console.log("Express server is running on port " + port);
+
+app.use("/", express.static("public_html/"));
+
+// EXPRESS END
 
 let honda = new Car({
     name: "Honda",
@@ -13,6 +29,8 @@ let honda = new Car({
     vin: "0239i42ujor3j2",
     owner: "Eduardo",
     engineHP: 300,
+    miles: 110000,
+    lastMaintMiles: 105000,
     fuelType: "gasoline",
     fuelCapacity: 21,
     fuelCurrent: 10,
@@ -23,3 +41,8 @@ let honda = new Car({
 
 honda.run(10);
 honda.run(1000);
+
+honda.refuel(50);
+
+honda.checkMaintenance();
+console.log(honda.miles);

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Business Dashboard</title>
+
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+
+    <style>
+        div {
+            border: solid black 1px;
+        }
+
+        #new-vehicle-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Rental Business Dashboard</h1>
+    </header>
+
+    <main>
+        <button id="button-vehicle-form">Add New Vehicle</button>
+        <div id="new-vehicle-form">
+            <h2>Add New Vehicle</h2>
+            <form>
+                <label for="name">Nickname</label><br />
+                <input id="name" type="text" /><br />
+
+                <label for="make">Make</label>
+                <label for="model">Model</label>
+                <label for="">Year</label>
+                <br />
+                
+                <input id="make" type="text" />
+                <input id="model" type="text" />
+                <input id="year" type="number" />
+                <br />
+                
+                <label for="occupancy">Number of Seats</label><br />
+                <input id="occupancy" type="number" /><br />
+                <label for="purchased">Purchased Date</label></br>
+                <input id="purchased" type="date" /><br />
+                <label for="vin">Vehicle Identification Number</label><br />
+                <input id="vin" type="text" /><br />
+                <label for="owner">Owner's Full Name</label><br />
+                <input id="owner" type="text" /><br />
+                <label for="miles">Odometer Reading (Miles)</label><br />
+                <input id="miles" type="number" />
+        </div>
+
+        <div id="vehicle-list">
+            <h2>Vehicle List</h2>
+        </div>
+    </main>
+
+    <footer></footer>
+    
+    <script>
+        $(document).ready(function () {
+            
+            $("#button-vehicle-form").click(function () {
+                $("#new-vehicle-form").css("display", "block");
+            });
+
+        });
+    </script>
+</body>
+</html>
