@@ -64,40 +64,44 @@
 
             <div id="additional-vehicle-form">
                 <h3>Additional Vehicle Details</h3>
-                <label for="occupancy">Number of Seats</label><br />
-                <input id="occupancy" type="number" /><br />
-                <label for="wheels">Wheels</label><br />
-                <input id="wheels" type="number" /></br />
-                <label for="doors">Doors</label><br />
-                <input id="doors" type="number" /><br />
+                <form>
+                    <label for="occupancy">Number of Seats</label><br />
+                    <input id="occupancy" type="number" /><br />
+                    <label for="wheels">Wheels</label><br />
+                    <input id="wheels" type="number" /></br />
+                    <label for="doors">Doors</label><br />
+                    <input id="doors" type="number" /><br />
 
-                <label for="engineHP">Engine Power (HP)</label><br />
-                <input id="engineHP" type="number" /><br />
+                    <label for="engineHP">Engine Power (HP)</label><br />
+                    <input id="engineHP" type="number" /><br />
 
-                <label for="lastMaintMiles">Odometer Reading for Last Maintenance</label><br />
-                <input id="lastMaintMiles" type="number" /><br />
+                    <label for="lastMaintMiles">Odometer Reading for Last Maintenance</label><br />
+                    <input id="lastMaintMiles" type="number" /><br />
 
-                <!-- Switch over to drop down menus -->
-                <label for="fuelType">Fuel Type</label><br />
-                <input id="fuelType" type="text" /><br />
+                    <!-- Switch over to drop down menus -->
+                    <label for="fuelType">Fuel Type</label><br />
+                    <input id="fuelType" type="text" /><br />
 
-                <label for="fuelCapacity">Gas Tank Capacity (Gallons)</label><br />
-                <input id="fuelCapacity" type="number" /><br />
+                    <label for="fuelCapacity">Gas Tank Capacity (Gallons)</label><br />
+                    <input id="fuelCapacity" type="number" /><br />
 
-                <label for="fuelCurrent">Current Amount of Fuel (Gallons)</label><br />
-                <input id="fuelCurrent" type="number" /><br />
+                    <label for="fuelCurrent">Current Amount of Fuel (Gallons)</label><br />
+                    <input id="fuelCurrent" type="number" /><br />
 
-                <label for="mpg">Miles Per Gallon (MPG)</label><br />
-                <input id="mpg" type="number" /><br />
-                
-                <!-- Switch over to radio buttons -->
-                <label for="bodyType">Body Type</label><br />
-                <input id="bodyType" type="text" /><br />
+                    <label for="mpg">Miles Per Gallon (MPG)</label><br />
+                    <input id="mpg" type="number" /><br />
+                    
+                    <!-- Switch over to radio buttons -->
+                    <label for="bodyType">Body Type</label><br />
+                    <input id="bodyType" type="text" /><br />
 
-                <label for="gvwr">Gross Vehicle Weight Rating (GVWR)</label><br />
-                <input id="gvwr" type="number" /><br />
-
+                    <label for="gvwr">Gross Vehicle Weight Rating (GVWR)</label><br />
+                    <input id="gvwr" type="number" /><br />
+                </form>
             </div>
+
+            <button id="cancel">Cancel</button>
+            <button id="submit">Create Entry</button>
 
         </div>
 
@@ -120,6 +124,39 @@
                 event.preventDefault();
 
                 $("#additional-vehicle-form").css("display", "block");
+            });
+
+            $("#cancel").click(function () {
+                $("#new-vehicle-form").css("display", "none");
+                $("#new-vehicle-form form").trigger("reset");
+            });
+
+            $("#submit").click(function () {
+                
+                let dataToSend = {
+                    name: $("#name").val(),
+                    make: $("#make").val(),
+                    model: $("#model").val(),
+                    year: parseInt($("#year").val()),
+                    purchased: $("#purchased").val(),
+                    vin: $("#vin").val(),
+                    owner: $("#owner").val(),
+                    miles: parseInt($("#miles").val()),
+                    occupancy: $("#occupancy").val(),
+                    wheels: $("#wheels").val(),
+                    doors: $("#doors").val(),
+                    engineHP: $("#engineHP").val(),
+                    lastMaintMiles: $("#lastMaintMiles").val(),
+                    fuelType: $("#fuelType").val(),
+                    fuelCapacity: $("#fuelCapacity").val(),
+                    fuelCurrent: $("#fuelCurrent").val(),
+                    mpg: $("#mpg").val(),
+                    bodyType: $("#bodyType").val(),
+                    gvwr: $("#gvwr").val(),
+                };
+
+                console.log(dataToSend);
+
             });
 
         });
