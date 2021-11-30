@@ -19,6 +19,10 @@
         #new-vehicle-form {
             display: none;
         }
+
+        #additional-vehicle-form {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -44,9 +48,8 @@
                 <input id="model" type="text" />
                 <input id="year" type="number" />
                 <br />
-                
-                <label for="occupancy">Number of Seats</label><br />
-                <input id="occupancy" type="number" /><br />
+
+               
                 <label for="purchased">Purchased Date</label></br>
                 <input id="purchased" type="date" /><br />
                 <label for="vin">Vehicle Identification Number</label><br />
@@ -55,6 +58,47 @@
                 <input id="owner" type="text" /><br />
                 <label for="miles">Odometer Reading (Miles)</label><br />
                 <input id="miles" type="number" />
+            </form>
+            
+            <p><a id="additional-form-url" href="#">Additional Details</a></p>
+
+            <div id="additional-vehicle-form">
+                <h3>Additional Vehicle Details</h3>
+                <label for="occupancy">Number of Seats</label><br />
+                <input id="occupancy" type="number" /><br />
+                <label for="wheels">Wheels</label><br />
+                <input id="wheels" type="number" /></br />
+                <label for="doors">Doors</label><br />
+                <input id="doors" type="number" /><br />
+
+                <label for="engineHP">Engine Power (HP)</label><br />
+                <input id="engineHP" type="number" /><br />
+
+                <label for="lastMaintMiles">Odometer Reading for Last Maintenance</label><br />
+                <input id="lastMaintMiles" type="number" /><br />
+
+                <!-- Switch over to drop down menus -->
+                <label for="fuelType">Fuel Type</label><br />
+                <input id="fuelType" type="text" /><br />
+
+                <label for="fuelCapacity">Gas Tank Capacity (Gallons)</label><br />
+                <input id="fuelCapacity" type="number" /><br />
+
+                <label for="fuelCurrent">Current Amount of Fuel (Gallons)</label><br />
+                <input id="fuelCurrent" type="number" /><br />
+
+                <label for="mpg">Miles Per Gallon (MPG)</label><br />
+                <input id="mpg" type="number" /><br />
+                
+                <!-- Switch over to radio buttons -->
+                <label for="bodyType">Body Type</label><br />
+                <input id="bodyType" type="text" /><br />
+
+                <label for="gvwr">Gross Vehicle Weight Rating (GVWR)</label><br />
+                <input id="gvwr" type="number" /><br />
+
+            </div>
+
         </div>
 
         <div id="vehicle-list">
@@ -69,6 +113,13 @@
             
             $("#button-vehicle-form").click(function () {
                 $("#new-vehicle-form").css("display", "block");
+            });
+
+            $("#additional-form-url").click(function (event) {
+                // Stops the "normal" action from happening.
+                event.preventDefault();
+
+                $("#additional-vehicle-form").css("display", "block");
             });
 
         });
