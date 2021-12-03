@@ -17,17 +17,31 @@ if (fs.existsSync("test.csv")) {
 
     // Create class based on Column Titles
     class StreetTree {
-        constructor() {
+        constructor(treeData) {
 
             // Loops through the columnTitles array, and creates a property for each of these Array Elements.
             for (let i = 0; i < columnTitles.length; i++) {
-                this[columnTitles[i]] = null;
+                this[columnTitles[i]] = treeData[i];
             }
 
         }
     }
 
-    console.log(new StreetTree());
+    let treeObjects = [];
+
+    for (let i = 1; i < dataArray.length; i++) {
+        let lineArray = dataArray[i].split(",");
+
+        let treeObject = new StreetTree(lineArray);
+
+        treeObjects.push(treeObject);
+    }
+
+    // Removes the last empty object because dataset has an empty line at the end.
+    treeObjects.pop();
+    
+    console.log(treeObjects);
+
 
 } else {
     console.log("Cannot find specified file!");
