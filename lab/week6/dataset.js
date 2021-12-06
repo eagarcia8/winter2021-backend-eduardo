@@ -88,7 +88,6 @@ for (let i = 0; i <  treeObjects.length; i++) {
     }
 }
 
-console.log(treeSite);
 
 // Tally the amount of sidewalk vs nonsidewalk trees.
 let sidewalkTally = {
@@ -113,18 +112,18 @@ for (let site in treeSite) {
 
 }
 
-console.log(sidewalkTally);
-
+console.log("What percentage of trees are sidewalk trees?");
 // Official answer to question.
 let answerQ1 = `The percentage of sidewalk trees vs other trees in San Francisco is ${(sidewalkTally.sidewalk / (sidewalkTally.sidewalk + sidewalkTally.nonsidewalk)) * 100}%.`;
 
 console.log(answerQ1);
 
 // Whats the most frequent Tree Species?
-console.log(treeObjects[38928]);
 
+// Build object to hold all species and count for that species.
 let treeSpecies = {};
 
+// Go through each tree object...
 for (let i = 0; i <  treeObjects.length; i++) {
 
     let currentTree = treeObjects[i];
@@ -142,50 +141,67 @@ for (let i = 0; i <  treeObjects.length; i++) {
 let highestSpecies = "";
 let highestCount = 0;
 
+// Gets rid of a specific property from an object.
 delete treeSpecies["Tree(s) ::"];
 
+// Loop through all the species in the treeSpecies object.
 for (let species in treeSpecies) {
     let currentSpeciesCount = treeSpecies[species];
 
+    // Compare the current tree species and see if its higher than the current highest count.
     if (highestCount < currentSpeciesCount) {
+
+        // If it is, then replace the existing values with the current species.
         highestSpecies = species;
         highestCount = currentSpeciesCount
     }
 }
-
+console.log("Whats the most frequent Tree Species?");
 console.log(`The most frequent tree species for streets in San Francisco is ${highestSpecies}.`);
 
 // From trees that have a plant date, how many were planted in 1955?
 
 let dates = {};
+// Track trees that don't have a date.
 let noDateCount = 0;
 
-console.log(treeObjects[2]);
-
+// Loop through all the tree objects...
 for (let i = 0; i < treeObjects.length; i++) {
 
     let date = treeObjects[i].PlantDate;
 
+    // If the tree does not have a date value, then add a 1 to the noDateCount variable AND skip this loop and move on the next loop.
     if (date === "") {
         noDateCount += 1;
         continue;
     }
 
+    // Split the date value by spaces.
     let dateArray = date.split(" ");
 
-    // EXAMPLE: dateArray = ["2002", "Apr", "01", "12:00:00", "AM"]
+    // EXAMPLE: dateArray = ["04/01/2002", "12:00:00", "AM"]
 
+    // Grab the first element of the dateArray.
     let monthdayyear = dateArray[0];
+
+    // Split this element by its slashes.
     let yearArray = monthdayyear.split("/");
+
+    // Get the year of the yearArray.
     let year = yearArray[2];
 
+    // Look for the specific year in dates object...
     if (dates.hasOwnProperty(year)) {
+
+        // add a 1 if it exists.
         dates[year] += 1;
     } else {
+        // otherwise create the property and start at 1.
         dates[year] = 1;
     }
 }
 
+console.log("From trees that have a plant date, how many were planted in 1955?");
 console.log(`There were ${dates["1955"]} trees planted in 1955.`);
 
 
@@ -193,12 +209,14 @@ console.log(`There were ${dates["1955"]} trees planted in 1955.`);
 
 let careTaker = {};
 
+// Loop through all the trees
 for (let i = 0; i < treeObjects.length; i++) {
 
     let currentTree = treeObjects[i];
 
     let owner = currentTree.qCaretaker;
 
+    // Check the careTaker object for the current object's qCaretaker value.
     if (careTaker.hasOwnProperty(owner)) {
         careTaker[owner] += 1;
     } else {
@@ -206,6 +224,5 @@ for (let i = 0; i < treeObjects.length; i++) {
     }
 }
 
-console.log(careTaker);
-
+console.log("How many trees does DPW take care of?");
 console.log(`DPW takes care of ${careTaker["DPW"]}.`);
